@@ -22,12 +22,15 @@ const fitlerData = [
 const FilterCard = () => {
     const [selectedValue, setSelectedValue] = useState('');
     const dispatch = useDispatch();
+
     const changeHandler = (value) => {
         setSelectedValue(value);
     }
-    useEffect(()=>{
+
+    useEffect(() => {
         dispatch(setSearchedQuery(selectedValue));
-    },[selectedValue]);
+    }, [selectedValue, dispatch]);
+
     return (
         <div className='w-full bg-white p-3 rounded-md'>
             <h1 className='font-bold text-lg'>Filter Jobs</h1>
@@ -35,13 +38,13 @@ const FilterCard = () => {
             <RadioGroup value={selectedValue} onValueChange={changeHandler}>
                 {
                     fitlerData.map((data, index) => (
-                        <div>
+                        <div key={index}> {/* ✅ Key for outer map */}
                             <h1 className='font-bold text-lg'>{data.fitlerType}</h1>
                             {
                                 data.array.map((item, idx) => {
-                                    const itemId = `id${index}-${idx}`
+                                    const itemId = `id${index}-${idx}`;
                                     return (
-                                        <div className='flex items-center space-x-2 my-2'>
+                                        <div key={itemId} className='flex items-center space-x-2 my-2'> {/* ✅ Key for inner map */}
                                             <RadioGroupItem value={item} id={itemId} />
                                             <Label htmlFor={itemId}>{item}</Label>
                                         </div>

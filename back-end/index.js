@@ -7,10 +7,6 @@ import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js"
-//import path, { resolve } from "path";
-
-//for deploy
-//const __dirname = path.resolve();
 
 
 dotenv.config({});
@@ -35,10 +31,7 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-// app.use(express.static(path.join(__dirname, "/front-end/dist")));
-// app.get('*', (_,res) => {
-//     res.sendFile(path.resolve(__dirname, "front-end", "dist", "index.html"));
-// })
+
 
 
 
